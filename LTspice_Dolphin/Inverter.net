@@ -1,0 +1,17 @@
+* C:\Users\huytq0\Documents\LTspice_huytq0\Inverter.asc
+M1 VDD IN OUT VDD PMOS l=65n w=2u
+M2 OUT IN 0 0 NMOS l=65n w=2u
+V1 VDD 0 0.7
+V2 IN 0 PULSE(0v 0.7v 0n 0.1n 0.1n 4.9n 10n)
+C1 OUT 0 10F
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\huytq0\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 0 60n 0 0.1n
+.temp 27c
+.lib 'C:\Users\huytq0\Documents\LTspice_huytq0\65nm_model.lib'
+.meas Tpg trig v(in) val=0.7*0.5 rise=1 targ v(out) val=0.7*0.5 fall=1
+.meas Trise trig v(out) val=0.7*0.2 rise=1 targ v(out)=0.7*0.8 rise=1
+.meas Tfall trig v(out) val=0.7*0.8 fall=1 targ v(out)=0.7*0.2 fall=1
+.backanno
+.end
