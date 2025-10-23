@@ -1,0 +1,42 @@
+.subckt dti_gen_inv$1  VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.15u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.15u
+.ends
+
+.subckt dti_gen_inv$2  VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.15u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.23u
+.ends
+
+.subckt dti_gen_inv$3  VDD VSS A Z
+m1i3 Z A VDD VDD  pch l=0.06u w=0.23u
+m1i4 Z A VSS VSS  nch l=0.06u w=0.23u
+.ends
+
+.subckt dti_gen_tx$1  VDD VSS PG NG IN OUT
+m1i3 IN PG OUT VDD  pch l=0.06u w=0.23u
+m1i2 IN NG OUT VSS  nch l=0.06u w=0.23u
+.ends
+
+.subckt dti_55g_6t_ffqx1 VDD VSS D CK Q
+mpmos_fbmlb N1N78 MLB VDD VDD  pch l=0.06u w=0.15u
+mnmos_fbck ML CK N1N79 VSS  nch l=0.06u w=0.15u
+mnmos_fbmlb N1N79 MLB VSS VSS  nch l=0.06u w=0.15u
+mpmos_fbckb ML CKB N1N78 VDD  pch l=0.06u w=0.15u
+mpmos_fbck SLB CK N1N92 VDD  pch l=0.06u w=0.15u
+mnmos_fbckb SLB CKB N1N94 VSS  nch l=0.06u w=0.15u
+mnmos_fbsl N1N94 FBSL VSS VSS  nch l=0.06u w=0.15u
+mpmos_fbsl N1N92 FBSL VDD VDD  pch l=0.06u w=0.15u
+xinv_slb VDD VSS SLB FBSL  dti_gen_inv$1 
+mnmos_d DLB D VSS VSS  nch l=0.06u w=0.23u
+mnmos_fbckb_1 N1N206 CKB VSS VSS  nch l=0.06u w=0.23u
+mnmos_dlb ML DLB N1N206 VSS  nch l=0.06u w=0.23u
+mpmos_dlb ML DLB N1N203 VDD  pch l=0.06u w=0.23u
+mpmos_fbck_1 N1N203 CK VDD VDD  pch l=0.06u w=0.23u
+mpmos_d DLB D VDD VDD  pch l=0.06u w=0.23u
+xinv_ck VDD VSS CK CKB  dti_gen_inv$2 
+xinv_q VDD VSS SLB Q  dti_gen_inv$3 
+xinv_ml VDD VSS ML MLB  dti_gen_inv$3 
+xtx_slb VDD VSS CKB CK MLB SLB  dti_gen_tx$1 
+.ends
+

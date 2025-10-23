@@ -1,0 +1,9 @@
+.subckt dti_55g_6t_and2x1 VDD VSS A B Z
+mn1 Z N1N47 VSS VSS  nch l=0.06u w=0.23u
+mn2 N1N47 A N1N43 VSS  nch l=0.06u w=0.23u
+mn3 N1N43 B VSS VSS  nch l=0.06u w=0.23u
+mp1 Z N1N47 VDD VDD  pch l=0.06u w=0.23u
+mp2 N1N47 A VDD VDD  pch l=0.06u w=0.23u
+mp3 N1N47 B VDD VDD  pch l=0.06u w=0.23u
+.ends
+

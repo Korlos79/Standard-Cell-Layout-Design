@@ -1,0 +1,12 @@
+
+.param wnd=1u wpd=1u
+
+.option scale=1
+
+
+.subckt dti_55g_6t_nand2x1 VDD VSS Z A B
+mn1 Z A N1N43 VSS nch l=0.06u w=0.23u
+mn2 N1N43 B VSS VSS nch l=0.06u w=0.23u
+mp1 Z A VDD VDD pch l=0.06u w=0.23u
+mp2 Z B VDD VDD pch l=0.06u w=0.23u
+.ends

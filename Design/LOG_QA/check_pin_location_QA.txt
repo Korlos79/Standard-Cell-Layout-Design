@@ -1,0 +1,1 @@
+Pin1txt must be placed at the center or 1/2 grid. The error locations of the cell are: B B A 
